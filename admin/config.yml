@@ -1,41 +1,19 @@
 backend:
-  name: git-gateway
-  branch: main  # or 'master' if you're using that branch
+  name: github
+  repo: qudlab/azbest-website
+  branch: master
 
-media_folder: "images/uploads"       # Where uploaded images are stored
-public_folder: "/images/uploads"     # Public URL path
+media_folder: "images"           # Where uploaded images go (in your repo)
+public_folder: "/images"         # How those images are referenced in HTML
 
 collections:
   - name: "products"
-    label: "Products"
-    folder: "data/products"          # You must create this folder
+    label: "Watch Products"
+    folder: "content/products"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Product Title", name: "title", widget: "string" }
+      - { label: "Watch Name", name: "title", widget: "string" }
       - { label: "Price (₦)", name: "price", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
-      - { label: "Category", name: "category", widget: "select", options: ["Chain", "Leather", "Smart", "Rubber"] }
-      - { label: "Badge", name: "badge", widget: "select", options: ["", "New", "Trending", "Best Seller"] }
-      - { label: "Description", name: "description", widget: "text" }
-
-  - name: "home_intro"
-    label: "Homepage Intro"
-    files:
-      - label: "Intro Message"
-        name: "intro"
-        file: "data/homepage/intro.md"
-        fields:
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Subheading", name: "subheading", widget: "string" }
-
-  - name: "contact_info"
-    label: "Contact Info"
-    files:
-      - label: "Contact Details"
-        name: "details"
-        file: "data/contact/details.md"
-        fields:
-          - { label: "Email", name: "email", widget: "string" }
-          - { label: "Phone", name: "phone", widget: "string" }
-          - { label: "WhatsApp Link", name: "whatsapp", widget: "string" }
+      - { label: "Description", name: "body", widget: "markdown" }
