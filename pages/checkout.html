@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - AZ-Best</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<div class="wrapper" id="site-wrapper">
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="../images/AZBEST logo.jpg" alt="AZ-Best Logo" />
+      <h1>AZ-Best</h1>
+    </div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="collections.html">Collections</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+      <a href="checkout.html" class="active">Checkout</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section class="checkout-form-section">
+      <h2>Checkout</h2>
+      <p>Complete your purchase by filling in your details:</p>
+      <form class="checkout-form" id="checkoutForm">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" placeholder="Your full name" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" placeholder="08012345678" required />
+
+        <label for="address">Delivery Address:</label>
+        <textarea id="address" placeholder="Your delivery address..." required></textarea>
+
+        <label for="payment">Payment Method:</label>
+        <select id="payment" required>
+          <option value="">Select payment option</option>
+          <option value="transfer">Bank Transfer</option>
+          <option value="delivery">Pay on Delivery</option>
+        </select>
+
+        <button type="submit" class="btn">Place Order on WhatsApp</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 AZ-Best Watches. All Rights Reserved.<br><i>Made by Abdulqudus</i></p>
+  </footer>
+</div>
+
+<!-- Scripts -->
+<script src="../js/script.js"></script>
+<script>
+  document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("fullname").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
+    const payment = document.getElementById("payment").value;
+
+    const message = `Hello, I want to place an order:\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nPayment Method: ${payment}`;
+    const whatsappLink = `https://wa.me/2347063244353?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappLink, "_blank");
+  });
+</script>
+</body>
+</html>
